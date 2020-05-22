@@ -10,11 +10,26 @@ export default class extends React.Component {
   };
 
   async componentDidMount() {
-    const data = await moviesApi.nowPlaying();
-    console.log(data);
+    try {
+      const {
+        data: { results: nowPlaying },
+      } = await moviesApi.nowPlaying();
+      this.setState({ nowPlaying });
+    } catch {
+      this.setState({ error: "Error" });
+    } finally {
+      this.setState({ loading: false });
+    }
   }
 
   render() {
-    return <HomePresenter />;
+    const { nowPlaying, error, loading } = this.state;
+    return (
+      <HomePresenter
+        nowPlaying={nowPlaying}
+        error={error}
+        loading={loading}
+      />
+    );
   }
 }
