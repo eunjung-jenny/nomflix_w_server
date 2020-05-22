@@ -1,5 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Section from "Components/Section";
+import Poster from "Components/Poster";
+import Loader from "Components/Loader";
+import Message from "Components/Message";
+import styled from "styled-components";
+
+const Container = styled.div``;
 
 const HomePresenter = ({
   nowPlaying,
@@ -9,22 +16,48 @@ const HomePresenter = ({
   loading,
 }) =>
   loading ? (
-    "loading..."
+    <Loader />
+  ) : error ? (
+    <Message text={error} color={"#F44336"} />
   ) : (
-    <div>
-      Now Playing
-      {nowPlaying.map((movie) => (
-        <p key={movie.id}>{movie.title}</p>
-      ))}
-      Upcoming
-      {upcoming.map((movie) => (
-        <p key={movie.id}>{movie.title}</p>
-      ))}
-      Popular
-      {popular.map((movie) => (
-        <p key={movie.id}>{movie.title}</p>
-      ))}
-    </div>
+    <Container>
+      {nowPlaying && nowPlaying.length > 0 && (
+        <Section title="Now Playing">
+          {nowPlaying.map((movie) => (
+            <Poster
+              key={movie.id}
+              title={movie.title}
+              imageUrl={movie.poster_path}
+              isMovie={true}
+            />
+          ))}
+        </Section>
+      )}
+      {upcoming && upcoming.length > 0 && (
+        <Section title="Upcoming Movies">
+          {upcoming.map((movie) => (
+            <Poster
+              key={movie.id}
+              title={movie.title}
+              imageUrl={movie.poster_path}
+              isMovie={true}
+            />
+          ))}
+        </Section>
+      )}
+      {popular && popular.length > 0 && (
+        <Section title="Popular Movies">
+          {popular.map((movie) => (
+            <Poster
+              key={movie.id}
+              title={movie.title}
+              imageUrl={movie.poster_path}
+              isMovie={true}
+            />
+          ))}
+        </Section>
+      )}
+    </Container>
   );
 
 HomePresenter.propTypes = {
