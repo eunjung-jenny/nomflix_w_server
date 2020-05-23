@@ -26,6 +26,7 @@ const HomePresenter = ({
           {nowPlaying.map((movie) => (
             <Poster
               key={movie.id}
+              id={movie.id}
               title={movie.title}
               imageUrl={movie.poster_path}
               isMovie={true}
@@ -38,6 +39,7 @@ const HomePresenter = ({
           {upcoming.map((movie) => (
             <Poster
               key={movie.id}
+              id={movie.id}
               title={movie.title}
               imageUrl={movie.poster_path}
               isMovie={true}
@@ -50,6 +52,7 @@ const HomePresenter = ({
           {popular.map((movie) => (
             <Poster
               key={movie.id}
+              id={movie.id}
               title={movie.title}
               imageUrl={movie.poster_path}
               isMovie={true}

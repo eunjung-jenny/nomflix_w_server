@@ -36,8 +36,8 @@ const Container = styled.div`
   }
 `;
 
-const Poster = ({ key, title, imageUrl }) => (
-  <Link>
+const Poster = ({ id, title, imageUrl, isMovie }) => (
+  <Link to={isMovie ? `/movie/${id}` : `/show/${id}`}>
     <Container>
       <Image
         bgUrl={

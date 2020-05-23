@@ -26,6 +26,7 @@ const TVPresenter = ({
           {topRated.map((show) => (
             <Poster
               key={show.id}
+              id={show.id}
               title={show.original_name}
               imageUrl={show.poster_path}
               isMovie={false}
@@ -38,6 +39,7 @@ const TVPresenter = ({
           {popular.map((show) => (
             <Poster
               key={show.id}
+              id={show.id}
               title={show.original_name}
               imageUrl={show.poster_path}
               isMovie={false}
@@ -50,6 +52,7 @@ const TVPresenter = ({
           {airingToday.map((show) => (
             <Poster
               key={show.id}
+              id={show.id}
               title={show.original_name}
               imageUrl={show.poster_path}
               isMovie={false}

@@ -25,7 +25,7 @@ export default class extends React.Component {
       this.setState({ nowPlaying, upcoming, popular });
     } catch {
       this.setState({
-        error: "Sorry, we have some networing problem",
+        error: "Sorry, we have some networking problem",
       });
     } finally {
       this.setState({ loading: false });

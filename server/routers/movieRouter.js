@@ -4,6 +4,7 @@ import {
   upcoming,
   topRated,
   popular,
+  detail,
 } from "../controllers/movieController.js";
 
 const movieRouter = express.Router();
@@ -15,5 +16,7 @@ movieRouter.get("/upcoming", upcoming);
 movieRouter.get("/top_rated", topRated);
 
 movieRouter.get("/popular", popular);
+
+movieRouter.get("/:id", detail);
 
 export default movieRouter;
