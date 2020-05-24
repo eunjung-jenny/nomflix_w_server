@@ -5,6 +5,7 @@ import { moviesApi, tvApi } from "api";
 export default class extends React.Component {
   state = {
     result: null,
+    isMovie: null,
     error: null,
     loading: true,
   };
@@ -28,8 +29,10 @@ export default class extends React.Component {
         ({ data: result } = await moviesApi.movieDetail(
           parsedId
         ));
+        this.setState({ isMovie: true });
       } else {
         ({ data: result } = await tvApi.tvDetail(parsedId));
+        this.setState({ isMovie: false });
       }
     } catch {
       this.setState({
@@ -41,12 +44,13 @@ export default class extends React.Component {
   }
 
   render() {
-    const { result, error, loading } = this.state;
+    const { result, error, loading, isMovie } = this.state;
     return (
       <DetailPresenter
         result={result}
         error={error}
         loading={loading}
+        isMovie={isMovie}
       />
     );
   }

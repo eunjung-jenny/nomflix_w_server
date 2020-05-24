@@ -19,3 +19,8 @@ const Message = ({ text, color }) => (
 );
 
 export default Message;
+
+Message.propTypes = {
+  text: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+};
