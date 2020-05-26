@@ -10,7 +10,7 @@ export const moviesApi = {
   topRated: () => api.get("movie/top_rated"),
   popular: () => api.get("movie/popular"),
   movieDetail: (id) => api.get(`movie/${id}`),
-  search: (term) => api.get("search/movie"),
+  search: (term) => api.get(`search/movie/${term}`),
 };
 
 export const tvApi = {
@@ -18,5 +18,5 @@ export const tvApi = {
   popular: () => api.get("tv/popular"),
   airingToday: () => api.get("tv/airing_today"),
   tvDetail: (id) => api.get(`tv/${id}`),
-  search: (term) => api.get("search/tv"),
+  search: (term) => api.get(`search/tv/${term}`),
 };
