@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
+import SearchForm from "Components/SearchForm";
 
 const Header = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
@@ -13,6 +14,7 @@ const Header = styled.div`
 
 const List = styled.ul`
   display: flex;
+  align-items: center;
 `;
 
 const Item = styled.li`
@@ -24,17 +26,25 @@ const Item = styled.li`
 
 const SLink = styled(Link)``;
 
+// const Form = styled.form``;
+
+// const Input = styled.input``;
+
 export default withRouter(({ location: { pathname } }) => (
   <Header>
     <List>
       <Item current={pathname === "/"}>
-        <SLink to="/">Movie</SLink>
+        <SLink to="/" replace>
+          Movie
+        </SLink>
       </Item>
       <Item current={pathname === "/tv"}>
-        <SLink to="/tv">TV</SLink>
+        <SLink to="/tv" replace>
+          TV
+        </SLink>
       </Item>
-      <Item current={pathname === "/search"}>
-        <SLink to="/search">Search</SLink>
+      <Item>
+        <SearchForm />
       </Item>
     </List>
   </Header>
