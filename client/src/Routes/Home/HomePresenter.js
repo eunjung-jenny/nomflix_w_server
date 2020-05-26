@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Section from "Components/Section";
-import Poster from "Components/Poster";
-import Loader from "Components/Loader";
-import Message from "Components/Message";
+import Section from "../../Components/Section";
+import Poster from "../../Components/Poster";
+import Loader from "../../Components/Loader";
+import Message from "../../Components/Message";
 import styled from "styled-components";
 
 const Container = styled.div``;

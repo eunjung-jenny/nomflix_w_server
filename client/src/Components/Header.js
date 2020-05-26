@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
-import SearchForm from "Components/SearchForm";
+import SearchForm from "./SearchForm";
 
 const Header = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
