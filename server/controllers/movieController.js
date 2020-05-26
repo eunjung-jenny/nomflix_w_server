@@ -55,3 +55,17 @@ export const detail = async (req, res) => {
     res.status(404).json({ data: null });
   }
 };
+
+export const searchMovie = async (req, res) => {
+  const {
+    params: { term },
+  } = req;
+  try {
+    const {
+      data: { results },
+    } = await moviesApi.search(term);
+    res.status(200).json(results);
+  } catch (error) {
+    res.status(404).json({ results: null });
+  }
+};

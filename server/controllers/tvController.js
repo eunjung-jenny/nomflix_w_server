@@ -44,3 +44,17 @@ export const detail = async (req, res) => {
     res.status(404).json({ data: null });
   }
 };
+
+export const searchTV = async (req, res) => {
+  const {
+    params: { term },
+  } = req;
+  try {
+    const {
+      data: { results },
+    } = await tvApi.search(term);
+    res.status(200).json(results);
+  } catch (error) {
+    res.status(404).json({ results: null });
+  }
+};
