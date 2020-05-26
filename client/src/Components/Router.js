@@ -14,7 +14,7 @@ export default () => (
     <Header />
     <Route path="/" exact={true} component={Home} />
     <Route path="/tv" component={TV} />
-    <Route path="/search" component={Search} />
+    <Route path="/search/:term" component={Search} />
     <Route path="/movie/:id" component={Detail} />
     <Route path="/show/:id" component={Detail} />
   </Router>
