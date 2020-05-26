@@ -29,6 +29,7 @@ const TVPresenter = ({
               id={show.id}
               title={show.original_name}
               imageUrl={show.poster_path}
+              rating={show.vote_average}
               isMovie={false}
             />
           ))}
@@ -42,6 +43,7 @@ const TVPresenter = ({
               id={show.id}
               title={show.original_name}
               imageUrl={show.poster_path}
+              rating={show.vote_average}
               isMovie={false}
             />
           ))}
@@ -55,6 +57,7 @@ const TVPresenter = ({
               id={show.id}
               title={show.original_name}
               imageUrl={show.poster_path}
+              rating={show.vote_average}
               isMovie={false}
             />
           ))}

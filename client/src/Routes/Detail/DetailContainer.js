@@ -12,7 +12,6 @@ export default class extends React.Component {
   };
 
   getResult = async (isMovie, id) => {
-    console.log("getResult");
     let result = null;
     try {
       if (isMovie) {
@@ -22,9 +21,9 @@ export default class extends React.Component {
       } else {
         ({ data: result } = await tvApi.tvDetail(id));
       }
-    } catch {
+    } catch (error) {
       this.setState({
-        error: "Sorry, we have some networking problem",
+        error: "Nothing found",
       });
     } finally {
       this.setState({

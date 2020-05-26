@@ -5,6 +5,8 @@ import Loader from "Components/Loader";
 import Message from "Components/Message";
 
 const Container = styled.div`
+  margin-top: 20px;
+  margin-left: 20px;
   width: 100vw;
   height: 100vh;
   font-size: 14px;
@@ -40,6 +42,8 @@ const Poster = styled.div`
   background-position-y: top;
   width: 30%;
   min-width: 300px;
+  height: 80%;
+  min-height: 500px;
 `;
 
 const Info = styled.div`
@@ -72,60 +76,72 @@ const DetailPresenter = ({
   loading ? (
     <Loader />
   ) : error ? (
-    <Message text={error} color={"#F44336"} />
+    <Message text={error} color="grey" />
   ) : (
     <Container>
       <Backdrop
         imageUrl={
-          result && result.backdrop_path
+          result.backdrop_path
             ? `https://image.tmdb.org/t/p/original${result.backdrop_path}`
             : ""
         }
       />
-      <Content>
-        <Poster
-          imageUrl={
-            result && result.poster_path
-              ? `https://image.tmdb.org/t/p/original${result.poster_path}`
-              : ""
-          }
-        />
-        <Info>
-          <Title>
-            {isMovie
-              ? result.original_title
-              : result.original_name}
-          </Title>
-          <FeatureContainer>
-            {result.runtime
-              ? `${result.runtime} min`
-              : `${result.episode_run_time[0]} min`}
-            <Divider>|</Divider>
-            {result.release_date
-              ? result.release_date.slice(0, 4)
-              : `${result.first_air_date.slice(0, 7)} ~ ${
-                  result.last_air_date &&
-                  result.last_air_date.slice(0, 7)
-                }`}
-            <Divider>|</Divider>
-            {result.genres &&
-              result.genres.map((genre, idx) =>
-                idx === result.genres.length - 1
-                  ? genre.name
-                  : `${genre.name} ・ `
-              )}
-            <Divider>|</Divider>
-            {result.vote_average &&
-              `⭐️ ${result.vote_average}`}
-          </FeatureContainer>
-          <hr />
-          <Overview>
-            {result && result.overview
-              ? result.overview
-              : ""}
-          </Overview>
-        </Info>
-      </Content>
+      {result && (
+        <Content>
+          <Poster
+            imageUrl={
+              result && result.poster_path
+                ? `https://image.tmdb.org/t/p/original${result.poster_path}`
+                : require("assets/noImage.jpg")
+            }
+          />
+          <Info>
+            <Title>
+              {isMovie
+                ? result.original_title
+                : result.original_name}
+            </Title>
+            <FeatureContainer>
+              {"runtime" in result
+                ? `${result.runtime} min`
+                : result.episode_run_time[0]
+                ? `${result.episode_run_time[0]} min`
+                : ""}
+              <Divider>|</Divider>
+              {result.release_date
+                ? result.release_date.slice(0, 4)
+                : result.first_air_date
+                ? result.last_air_date
+                  ? `${result.first_air_date.slice(
+                      0,
+                      7
+                    )} ~ ${result.last_air_date.slice(
+                      0,
+                      7
+                    )}`
+                  : `${result.first_air_date.slice(0, 7)} ~`
+                : ""}
+              <Divider>|</Divider>
+              {result.genres &&
+                result.genres.map((genre, idx) =>
+                  idx === result.genres.length - 1
+                    ? genre.name
+                    : `${genre.name} ・ `
+                )}
+              <Divider>|</Divider>
+              {"vote_average" in result
+                ? `⭐️ ${result.vote_average}`
+                : ""}
+            </FeatureContainer>
+            <hr />
+            <Overview>
+              {result && result.overview
+                ? result.overview
+                : ""}
+            </Overview>
+          </Info>
+        </Content>
+      )}
     </Container>
   );
 

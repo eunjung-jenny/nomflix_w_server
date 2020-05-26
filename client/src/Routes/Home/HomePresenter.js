@@ -29,6 +29,7 @@ const HomePresenter = ({
               id={movie.id}
               title={movie.title}
               imageUrl={movie.poster_path}
+              rating={movie.vote_average}
               isMovie={true}
             />
           ))}
@@ -42,6 +43,7 @@ const HomePresenter = ({
               id={movie.id}
               title={movie.title}
               imageUrl={movie.poster_path}
+              rating={movie.vote_average}
               isMovie={true}
             />
           ))}
@@ -55,6 +57,7 @@ const HomePresenter = ({
               id={movie.id}
               title={movie.title}
               imageUrl={movie.poster_path}
+              rating={movie.vote_average}
               isMovie={true}
             />
           ))}

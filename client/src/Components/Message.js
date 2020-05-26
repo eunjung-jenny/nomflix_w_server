@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 `;
 
 const Text = styled.div`

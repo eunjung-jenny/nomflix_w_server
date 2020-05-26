@@ -28,6 +28,7 @@ const SearchPresenter = ({
               id={movie.id}
               title={movie.title}
               imageUrl={movie.poster_path}
+              rating={movie.vote_average}
               isMovie={true}
             />
           ))}
@@ -41,6 +42,7 @@ const SearchPresenter = ({
               id={show.id}
               title={show.name}
               imageUrl={show.poster_path}
+              rating={show.vote_average}
               isMovie={false}
             />
           ))}
