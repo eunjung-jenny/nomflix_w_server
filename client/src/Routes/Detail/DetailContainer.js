@@ -4,13 +4,39 @@ import { moviesApi, tvApi } from "api";
 
 export default class extends React.Component {
   state = {
-    result: null,
+    id: null,
     isMovie: null,
+    result: null,
     error: null,
     loading: true,
   };
 
-  async componentDidMount() {
+  getResult = async (isMovie, id) => {
+    console.log("getResult");
+    let result = null;
+    try {
+      if (isMovie) {
+        ({ data: result } = await moviesApi.movieDetail(
+          id
+        ));
+      } else {
+        ({ data: result } = await tvApi.tvDetail(id));
+      }
+    } catch {
+      this.setState({
+        error: "Sorry, we have some networking problem",
+      });
+    } finally {
+      this.setState({
+        id,
+        isMovie,
+        result,
+        loading: false,
+      });
+    }
+  };
+
+  componentDidMount() {
     const {
       match: {
         params: { id },
@@ -23,23 +49,31 @@ export default class extends React.Component {
     if (isNaN(parsedId)) {
       return push("/");
     }
-    let result = null;
-    try {
-      if (path.includes("movie")) {
-        ({ data: result } = await moviesApi.movieDetail(
-          parsedId
-        ));
-        this.setState({ isMovie: true });
-      } else {
-        ({ data: result } = await tvApi.tvDetail(parsedId));
-        this.setState({ isMovie: false });
+    const isMovie = path.includes("movie");
+    this.getResult(isMovie, parsedId);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.id) {
+      const {
+        match: {
+          params: { id },
+          path,
+        },
+        history: { push },
+      } = this.props;
+
+      const parsedId = Number(id);
+      if (isNaN(parsedId)) {
+        return push("/");
       }
-    } catch {
-      this.setState({
-        error: "Sorry, we have some networking problem",
-      });
-    } finally {
-      this.setState({ loading: false, result });
+      const isMovie = path.includes("movie");
+      if (
+        parsedId !== this.state.id ||
+        isMovie !== this.state.isMovie
+      ) {
+        this.getResult(isMovie, parsedId);
+      }
     }
   }
 
