@@ -63,7 +63,7 @@ const Poster = ({
         bgUrl={
           imageUrl
             ? `https://image.tmdb.org/t/p/w300${imageUrl}`
-            : require("assets/noImage.jpg")
+            : require("../assets/noImage.jpg")
         }
       />
       <Title>{title}</Title>
