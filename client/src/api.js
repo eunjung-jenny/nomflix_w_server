@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://13.209.135.218/api/",
+  baseURL: "https://13.209.135.218/api/",
 });
 
 export const moviesApi = {
