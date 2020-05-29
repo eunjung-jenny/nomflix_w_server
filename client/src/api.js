@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://13.209.135.218/api/",
+  baseURL:
+    "http://first-load-balancer-603173088.ap-northeast-2.elb.amazonaws.com/api/",
 });
 
 export const moviesApi = {
