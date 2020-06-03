@@ -12,8 +12,8 @@ const handleAccess = function (req, res) {
   res.status(200).json({ success: true });
 };
 
-app.use("/api/movie", movieRouter);
-app.use("/api/tv", tvRouter);
-app.use("/api/search", searchRouter);
+app.use("/movie", movieRouter);
+app.use("/tv", tvRouter);
+app.use("/search", searchRouter);
 
 export default app;

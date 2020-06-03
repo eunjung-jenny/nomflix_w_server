@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://my-first-domain.ml/api/",
+  baseURL: "https://api.my-first-domain.ml/",
 });
 
 export const moviesApi = {
