@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL:
-    "https://nomflix-185472437.ap-northeast-2.elb.amazonaws.com/api/",
+  baseURL: "https://my-first-domain.ml/api/",
 });
 
 export const moviesApi = {
